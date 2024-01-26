@@ -4,22 +4,23 @@ import requests
 
 load_dotenv()
 
-CANVAS_API_TOKEN = os.getenv('CANVAS_API_TOKEN')
+CANVAS_API_TOKEN = os.getenv('CANVAS_API_TOKEN')  # Your Canvas API token
 CANVAS_URL = 'https://canvas.instructure.com/api/v1'
 HEADER = {'Authorization': f'Bearer {CANVAS_API_TOKEN}', }
 
 
-# def _get_user_id() -> int:
-#     """Queries Canvas for user id"""
-#     user_id_url = f'{CANVAS_URL}/users/self'
-#     response = requests.get(url=user_id_url, headers=HEADER)
-#
-#     if response.status_code == 200:
-#         data = response.json()
-#         return data["id"]
-#
-#     return -1
-#
+
+def _get_user_id() -> int:  # this is not used but could be useful in the future
+    """Queries Canvas for user id"""
+    user_id_url = f'{CANVAS_URL}/users/self'
+    response = requests.get(url=user_id_url, headers=HEADER)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data["id"]
+
+    return -1
+
 
 def get_course_list() -> list[dict]:
     """Returns a list of courses from the user"""
@@ -73,6 +74,7 @@ def unsubmitted_course_assignments(course: dict):
 
     course['assignments'] = assignment_list
     return course
+
 
 if __name__ == '__main__':
     user_courses = get_course_list()
