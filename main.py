@@ -65,7 +65,7 @@ def get_assignment_due_dates(course: dict):
 
 
 
-# def planner_check():  # TODO: Get working (maybe)
+# def planner_check():
 #     user_id = get_user_id()
 #     planner_url = f'{CANVAS_URL}/planner/items'
 #
