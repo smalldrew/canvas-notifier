@@ -5,9 +5,9 @@ import smtplib
 
 load_dotenv()
 
-EMAIL = os.getenv('EMAIL')
-PASSWORD = os.getenv('PASSWORD')
-PHONE_NUMBER = os.getenv('PHONE_NUMBER')
+EMAIL = os.getenv('EMAIL')  # email to send via
+PASSWORD = os.getenv('PASSWORD')  # special auth password for email above
+PHONE_NUMBER = os.getenv('PHONE_NUMBER')  #  phone number to send texts to
 
 CARRIERS = {
     "att": "@mms.att.net",
