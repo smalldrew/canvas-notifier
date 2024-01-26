@@ -8,8 +8,8 @@ load_dotenv()
 
 CANVAS_API_TOKEN = os.getenv('CANVAS_API_TOKEN')
 CANVAS_URL = 'https://canvas.instructure.com/api/v1'
-
 HEADER = {'Authorization': f'Bearer {CANVAS_API_TOKEN}', }
+
 
 def get_user_id() -> int:
     """Queries Canvas for user id"""
@@ -22,19 +22,17 @@ def get_user_id() -> int:
 
     return -1
 
+
 def get_course_list() -> list[dict]:
     """Returns a list of courses from the user"""
     courses_url = f'{CANVAS_URL}/courses'
-
     course_params = {
         'enrollment_type': 'student',
         'enrollment_state':'active',
     }
-
     course_list = []
 
     request = requests.get(url=courses_url, params=course_params, headers=HEADER)
-
 
     if request.status_code == 200:
         course_data = request.json()
@@ -52,47 +50,32 @@ def get_course_list() -> list[dict]:
     return course_list
 
 
-def get_assignment_due_dates(course: dict):
+def unsubmitted_course_assignments(course: dict):
     """Gets the assignment due dates of a course"""
-    course_due_date_url = f'{CANVAS_URL}/courses/{course["id"]}/effective_due_dates'
+    course_due_date_url = f'{CANVAS_URL}/courses/{course["id"]}/assignments'
+    assignment_params = {
+        'bucket': 'unsubmitted',
+    }
 
-    request = requests.get(url=course_due_date_url, headers=HEADER)
+    request = requests.get(url=course_due_date_url, headers=HEADER, params=assignment_params)
+    assignment_list = []
 
     if request.status_code == 200:
         data = request.json()
+        for assignment in data:
+            if assignment['due_at'] is None:
+                continue
 
-    pass
+            curr_assignment_data = {
+                'name' : assignment['name'],
+                'points_possible': assignment['points_possible'],
+                'due_at': assignment['due_at'],
+            }
+            assignment_list.append(curr_assignment_data)
 
-
-
-# def planner_check():
-#     user_id = get_user_id()
-#     planner_url = f'{CANVAS_URL}/planner/items'
-#
-#     start = date(2024, 1, 1)
-#     end = date(2024, 2, 24)
-#
-#     # planner_params = {
-#     #     'start_date': start,
-#     #     'end_date': end,
-#     #     'observed_user_id': str(user_id),
-#     # }
-#     #
-#     response = requests.get(url=planner_url, headers=HEADER)
-#
-#     print(response)
-#
-#     # Planner Object
-#     # title - title of the planner object
-#     # todo_date - date that should show up
-#     # linked_object_type - assignment, quiz, etc.
-#     # linked_object_html_url - planner url
-#
-#     if response.status_code == 200:
-#          data = response.json()
-#          print(data)
+    course['assignments'] = assignment_list
+    return course
 
 
 if __name__ == '__main__':
-    # planner_check()
     pass
