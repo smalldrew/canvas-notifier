@@ -27,12 +27,13 @@ def days_hours_minutes_format(minutes) -> str:
     return f'{days} Days, {hours} Hours, {remaining} Minutes'
 
 
-def course_alert(course: dict, assignment: dict) -> None:
+def course_alert(assignment: dict) -> None:
     """Sends an alert text to the user"""
     assignment_due_in = days_hours_minutes_format(time_remaining(assignment["due_at"]))
-    send_text(f'CANVAS ALERT: Assignment Due In: {assignment_due_in}')
-    send_text(f'Assignment: {assignment["name"]} | Points: {assignment["points_possible"]}')
-    send_text(f'Class: {course["name"]}')
+    send_text("[CANVAS ALERT]\n"
+              f"UNSUBMITTED: {assignment["name"]}\n"
+              f"DUE IN: {assignment_due_in}\n"
+              f"POINTS: {assignment["points_possible"]}")
 
     print(f'Sent Assignment Alert!')
 
@@ -62,7 +63,7 @@ def main():
             print(f'  - {assignment["name"]} | Due In: {time_left_formatted} | Points: {assignment["points_possible"]}')
 
             if minutes_remaining in WARNING_SCHEDULE:
-                course_alert(course, assignment)
+                course_alert(assignment)
 
         print()
 
