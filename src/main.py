@@ -66,7 +66,6 @@ def main():
 
         print()
 
-    course_alert(course_list[2], course_list[2]["assignments"][0])
 
 if __name__ == '__main__':
     main()
