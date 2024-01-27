@@ -5,21 +5,16 @@ import pytz
 
 BUFFER_MINUTES = 240  # minutes before assignment is due
 
-def time_remaining(given_date, course_time_zone) -> float:
+def time_remaining(given_date) -> float:
     """Returns the time remaining for the given assignment"""
-    # (Canvas API returns time in UTC format)
-
-    course_time_zone = pytz.timezone(course_time_zone)
-
-    local_datetime = utc_datetime.replace(tzinfo = pytz.utc).astimezone(local_timezone)
-    curr_time = datetime.now()
+    current_time_utc = datetime.now(pytz.timezone('UTC'))  # Get current time in UTC format
     assignment_deadline = datetime.strptime(given_date, '%Y-%m-%dT%H:%M:%SZ')
+    assignment_deadline = pytz.utc.localize(assignment_deadline)
 
+    remaining_time = assignment_deadline - current_time_utc
 
-    time_diff = assignment_deadline - curr_time
-    print(f'time diff: {time_diff}, assignment deadline: {assignment_deadline}')
+    return remaining_time.total_seconds() / 60
 
-    return time_diff.total_seconds() / 60
 
 def days_hours_minutes_format(minutes):
     days = minutes // (24 * 60)
