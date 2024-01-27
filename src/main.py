@@ -1,5 +1,5 @@
 from datetime import datetime
-from src import canvas
+import canvas
 from util.sms import send_text
 import pytz
 
@@ -30,10 +30,10 @@ def days_hours_minutes_format(minutes) -> str:
 def course_alert(assignment: dict) -> None:
     """Sends an alert text to the user"""
     assignment_due_in = days_hours_minutes_format(time_remaining(assignment["due_at"]))
-    send_text("[CANVAS ALERT]\n"
-              f"UNSUBMITTED: {assignment["name"]}\n"
-              f"DUE IN: {assignment_due_in}\n"
-              f"POINTS: {assignment["points_possible"]}")
+    send_text('[CANVAS ALERT]\n'
+              f'UNSUBMITTED: {assignment["name"]}\n'
+              f'DUE IN: {assignment_due_in}\n'
+              f'POINTS: {assignment["points_possible"]}')
 
     print(f'Sent Assignment Alert!')
 
