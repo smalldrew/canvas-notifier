@@ -9,7 +9,6 @@ CANVAS_URL = 'https://canvas.instructure.com/api/v1'
 HEADER = {'Authorization': f'Bearer {CANVAS_API_TOKEN}', }
 
 
-
 def _get_user_id() -> int:  # this is not used but could be useful in the future
     """Queries Canvas for user id"""
     user_id_url = f'{CANVAS_URL}/users/self'
