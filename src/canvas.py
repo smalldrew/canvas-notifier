@@ -52,7 +52,7 @@ def unsubmitted_course_assignments(course: dict):
     """Gets the assignment due dates of a course"""
     course_due_date_url = f'{CANVAS_URL}/courses/{course["id"]}/assignments'
     assignment_params = {
-        'bucket': 'unsubmitted',
+        'bucket': ['upcoming'],
     }
 
     request = requests.get(url=course_due_date_url, headers=HEADER, params=assignment_params)
