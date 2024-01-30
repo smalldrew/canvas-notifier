@@ -16,11 +16,11 @@ I had an assignment that I was about to do and then forgot until 10 minutes befo
 
 First, you'll need to set up credentials stuff (for texting and Canvas API).  
 
-I set it up with multiple envs (there's probably a better way to do it) but you could also alter  
-the variables inside the code.
+I set it up with multiple .env files (there's probably a better way to do it) but you could also alter  
+the variables inside the code. (methods shown below)
 
 ### Gmail Texting Setup
-**Follow [this guide](https://support.google.com/accounts/answer/185833?p=InvalidSecondFactor&visit_id=637700239874464736-1954441174&rd=1) to get your credentials for texting.**   
+**Follow [this guide](https://support.google.com/accounts/answer/185833?p=InvalidSecondFactor&visit_id=637700239874464736-1954441174&rd=1) to get your credentials for texting via Gmail servers.**   
 
 
 #### ENV Method:
@@ -62,29 +62,35 @@ I used a cron job on an [ec2 instance](https://www.techtarget.com/searchaws/defi
  
 **The following commands are only UNIX based machines (sorry windows users)**  
 
-**1.**  ``cd`` into /src
+**1.**  ``cd`` into /src:
 
 ```bash
 cd canvas-notifier/src/
 ```
 
-**2.** adjust permissions of python file with ``chmod``
+**2.** install needed packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+**3.** adjust permissions of python file with ``chmod``:
 
 ```bash
 chmod +x main.py
 ```
 
-**3.** edit crontab
+**4.** edit crontab:
 ```bash
 crontab -e
 ```
 
-**4.** put this in your crontab thing (with respective Python and main.py paths)
+**5.** put this in your crontab thing (with respective Python and main.py paths):
 ```
 * * * * * /usr/bin/python3 /home/ec2-user/canvas-notifier/src/main.py
 ```
 
-**5.** enjoy!
+**6.** enjoy!
 
 # TODO
 - [X] Make it work
@@ -104,7 +110,7 @@ crontab -e
 A: Beacuse it was free (thanks bezos)
 
 **Q: Is this practical?**  
-A: no
+A: kind of?
 
 **Q: Does this use AI?**  
 A: unfortunately, no.
