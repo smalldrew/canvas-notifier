@@ -5,7 +5,7 @@
 Canvas Notifier is a Python script that texts you as the assignment gets closer if you haven't submitted.
 ![Diagram](public/diagram.png)
 
-# Backstory
+# Tragic Backstory
 I had an assignment that I was about to do and then forgot until 10 minutes before.  
 
 **my live reaction 10 minutes before:**  
