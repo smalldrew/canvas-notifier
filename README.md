@@ -23,7 +23,7 @@ the variables inside the code.
 **Follow [this guide](https://support.google.com/accounts/answer/185833?p=InvalidSecondFactor&visit_id=637700239874464736-1954441174&rd=1) to get your credentials for texting.**   
 
 
-#### ENV Method  
+#### ENV Method:
 add this .env to ``src/util``:
 ```
 EMAIL=INSERT_YOUR_EMAIL 
@@ -31,7 +31,7 @@ PASSWORD=INSERT_YOUR_PASSWORD
 PHONE_NUMBER=PHONE_NUMBER_TO_SEND_ALERTS_TO
 ```  
 
-#### Edit Code Variables Method
+#### Edit Code Variables Method:
 edit these variables found in ``src/util/sms.py``:
 ```python
 EMAIL = 'PUT YOUR EMAIL HERE'  # email to send via
@@ -42,13 +42,13 @@ PHONE_NUMBER = 'PUT YOUR PHONE NUMBER HERE'  # phone number to send texts to
 ### Canvas API Setup
 **Follow [this guide](https://community.canvaslms.com/t5/Admin-Guide/How-do-I-add-a-developer-API-key-for-an-account/ta-p/259) to get your developer key**  
 
-#### ENV Method
+#### ENV Method:
 add this env in the scope of ``canvas.py``:
 ```
 CANVAS_API_TOKEN=INSERT_YOUR_TOKEN
 ```
 
-#### Edit Code Variable Method
+#### Edit Code Variable Method:
 edit this variable in ``canvas.py``:
 ```python
 import os
@@ -95,3 +95,13 @@ crontab -e
 - building a simple project with Python
 - you can text for free on gmail servers
 - making a decent readme
+
+# FAQ:
+**Q: Why AWS?**    
+A: Beacuse it was free (thanks bezos)
+
+**Q: Is this practical?**  
+A: no
+
+**Q: Does this use AI?**  
+A: unfortunately, no.
