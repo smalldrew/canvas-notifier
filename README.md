@@ -55,7 +55,7 @@ CANVAS_API_TOKEN = 'INSERT YOUR TOKEN HERE'  # Your Canvas API token
 ```
 
 ## Hosting
-I used a cron job on an [ec2 instance](https://www.techtarget.com/searchaws/definition/Amazon-EC2-instances) that just checks Canvas every minute.  
+I used a [cron job](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) on an [ec2 instance](https://www.techtarget.com/searchaws/definition/Amazon-EC2-instances) that just checks Canvas every minute.  
 
 **[Get 1 year free of AWS](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)** (not sponsored)  
 
