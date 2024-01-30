@@ -2,13 +2,13 @@
 
 # About
 
-Canvas Notifier is a Python script that texts you as the assignment gets closer if you haven't submitted.
+Canvas Notifier is a Python script that texts you as the assignment gets closer if you haven't submitted.  
 ![Diagram](public/diagram.png)
 
 # Tragic Backstory
 I had an assignment that I was about to do and then forgot until 10 minutes before.  
 
-**my live reaction 10 minutes before:**  
+**My live reaction 10 minutes before:**  
 ![My Reaction](public/reaction.png)
 
 
@@ -43,7 +43,7 @@ PHONE_NUMBER = 'PUT YOUR PHONE NUMBER HERE'  # phone number to send texts to
 **Follow [this guide](https://community.canvaslms.com/t5/Admin-Guide/How-do-I-add-a-developer-API-key-for-an-account/ta-p/259) to get your developer key**  
 
 #### ENV Method:
-add this env in the scope of ``canvas.py``:
+add this .env in the scope of ``canvas.py``:
 ```
 CANVAS_API_TOKEN=INSERT_YOUR_TOKEN
 ```
@@ -51,13 +51,16 @@ CANVAS_API_TOKEN=INSERT_YOUR_TOKEN
 #### Edit Code Variable Method:
 edit this variable in ``canvas.py``:
 ```python
-import os
 CANVAS_API_TOKEN = 'INSERT YOUR TOKEN HERE'  # Your Canvas API token
 ```
 
-## Linux Server
-I used a cron job that just checks Canvas every minute.  
-After cloning the repo, make sure you cd into the directory and chmod it.  
+## Hosting
+I used a cron job on an [ec2 instance](https://www.techtarget.com/searchaws/definition/Amazon-EC2-instances) that just checks Canvas every minute.  
+
+**[Get 1 year free of AWS](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)** (not sponsored)  
+
+ 
+**The following commands are only UNIX based machines (sorry windows users)**  
 
 **1.**  ``cd`` into /src
 
