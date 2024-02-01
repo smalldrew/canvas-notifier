@@ -3,8 +3,8 @@ import canvas
 from util.sms import send_text
 import pytz
 
-# Warning Schedule: [1 day, 6 hours, 3 hours, 1 hour, 30 minutes, 10 minutes)
-WARNING_SCHEDULE = [1440, 360, 180, 60, 30, 10]
+# Warning Schedule: [1 day, 6 hours, 3 hours, 2 hours, 1 hour, 30 minutes, 10 minutes, 5 minutes)
+WARNING_SCHEDULE = [1440, 360, 180, 120, 60, 30, 10, 5]  # (in minutes)
 
 
 def time_remaining(given_date) -> int:

@@ -64,6 +64,9 @@ def unsubmitted_course_assignments(course: dict):
             if assignment['due_at'] is None:
                 continue
 
+            if 'submitted' in assignment.keys():
+                continue
+
             curr_assignment_data = {
                 'name' : assignment['name'],
                 'points_possible': assignment['points_possible'],
