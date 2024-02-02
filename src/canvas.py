@@ -65,8 +65,12 @@ def unsubmitted_course_assignments(course: dict):
             if assignment['due_at'] is None:
                 continue
 
+<<<<<<< HEAD
             # if assignment is already submitted
             if assignment['submission']['submitted_at']:
+=======
+            if 'submitted' in assignment.keys():
+>>>>>>> refs/remotes/origin/main
                 continue
 
             curr_assignment_data = {
