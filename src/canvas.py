@@ -52,6 +52,7 @@ def unsubmitted_course_assignments(course: dict):
     """Gets the assignment due dates of a course"""
     course_due_date_url = f'{CANVAS_URL}/courses/{course["id"]}/assignments'
     assignment_params = {
+        'include[]': 'submission',
         'bucket': 'upcoming',
     }
 
@@ -62,6 +63,10 @@ def unsubmitted_course_assignments(course: dict):
         data = request.json()
         for assignment in data:
             if assignment['due_at'] is None:
+                continue
+
+            # if assignment is already submitted
+            if assignment['submission']['submitted_at']:
                 continue
 
             curr_assignment_data = {
