@@ -67,6 +67,7 @@ def unsubmitted_course_assignments(course: dict):
 
             # if assignment is already submitted
             if assignment['submission']['submitted_at']:
+                continue
 
             curr_assignment_data = {
                 'name' : assignment['name'],
