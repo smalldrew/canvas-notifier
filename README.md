@@ -109,7 +109,7 @@ crontab -e
 
 - [X] Make it work
 - [ ] Refactor (lol)
-- [ ] Fix some assignment checking bugs
+- [X] Fix some assignment checking bugs
 - [ ] Finish Canvas refresh token feature (for more security)
 
 ## What I learned  
